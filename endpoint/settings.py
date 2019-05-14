@@ -25,7 +25,7 @@ SECRET_KEY = 'ik%!=0+cw=1@#$0j2ltuqad276q64#@2yhg65*iz3xddbvch8h'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['134.209.244.45', 'apiendpoint.cf']
+ALLOWED_HOSTS = ['46.101.187.9', 'apiendpoint.cf']
 
 
 # Application definition
