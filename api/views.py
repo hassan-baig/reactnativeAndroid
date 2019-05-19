@@ -113,3 +113,37 @@ class actionViews(viewsets.ModelViewSet):
         CsrfExemptSessionAuthentication, BasicAuthentication)
     queryset = Action.objects.all()
     serializer_class = actionSerializer
+    
+    
+    
+
+@csrf_exempt
+def machineData(request):
+    if request.method == 'POST':
+        machineID = request.POST.get("machine")
+        print(machineID)
+        machType = machine.objects.get(id=str(machineID))
+        if machType:
+            machType = machineType.objects.get(id=str(machType))
+            objects = machType.sections.all()
+            sections = []
+            for o in objects:
+                sections.append(str(o))
+
+            objects = machType.subsections.all()
+            subsections = []
+            for o in objects:
+                subsections.append(str(o))
+
+            res = {
+                "machineType": machType.name,
+                "sections": sections,
+                "subsections": subsections
+            }
+
+            return HttpResponse(json.dumps(res), content_type="application/json")
+        else:
+            return HttpResponse("No Machine")
+    else:
+        return HttpResponse("Hello")
+
