@@ -22,4 +22,5 @@ router.register('action', views.actionViews)
 
 urlpatterns = [
     path('api/', include(router.urls)),
+    path('machinedata', views.machineData)
 ]
